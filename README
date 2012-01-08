@@ -1,0 +1,9 @@
+From the console:
+
+bundle install
+irb
+require './app.rb'
+blah = CandidateTweets.new('charleston')
+blah.get_tweets
+
+yay.
