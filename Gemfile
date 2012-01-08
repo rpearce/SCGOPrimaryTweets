@@ -1,0 +1,10 @@
+source 'http://rubygems.org'
+
+gem 'twitter'
+# gem 'json'
+# gem 'sinatra'
+# gem 'haml'
+# gem 'json'
+# gem 'rest-client'
+# gem 'httparty'
+# gem 'curb'
