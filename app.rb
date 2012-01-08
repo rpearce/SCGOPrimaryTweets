@@ -6,6 +6,7 @@ class CandidateTweets
 
   def initialize(city)
     cities = {'charleston' => '32.7765656,-79.9309216', 'columbia' => '34.0007104,-81.0348144', 'greenville' => '34.8526176,-82.3940104', 'spartanburg' => '34.9495672,-81.9320482'}
+    @city = city
     @city_coords = cities[city]
   end
 
@@ -18,14 +19,15 @@ class CandidateTweets
     # Can only read 1500 max
     results = []
     num = 15
-    count = 1
+    page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',20mi', :page => count, :rpp => 100)
-      count += 1
+      results += Twitter.search(query, :geocode => @city_coords + ',20mi', :page => page_num, :rpp => 100)
+      page_num += 1
     end
 
     results.each {|result| puts result.inspect; puts}
 
+    p 'City: ' + @city.inspect
     p 'Query: ' + query.inspect
     p 'Result count: ' + results.count.inspect
   end
