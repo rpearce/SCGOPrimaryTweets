@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'twitter'
+require 'cloudq_client'
 # require 'json'
 
 class CandidateTweets
