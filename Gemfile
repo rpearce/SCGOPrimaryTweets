@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'twitter'
+gem 'mongo'
+gem 'cloudq'
 gem 'cloudq_client'
 # gem 'json'
 # gem 'sinatra'
