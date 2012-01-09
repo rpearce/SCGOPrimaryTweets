@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'twitter'
+gem 'cloudq'
 # gem 'json'
 # gem 'sinatra'
 # gem 'haml'
