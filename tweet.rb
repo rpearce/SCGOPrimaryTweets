@@ -4,6 +4,7 @@ class Tweet
   include MongoMapper::Document
 
   key :created_at, Time
+  key :entities, Hash
   key :from_user, String
   key :from_user_id, Integer
   key :from_user_id_str, String
