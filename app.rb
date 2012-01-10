@@ -9,14 +9,13 @@ class CandidateTweets
     MongoMapper.connection = Mongo::Connection.new('staff.mongohq.com', 10072)
     MongoMapper.database = 'SCGOPrimary'
     MongoMapper.database.authenticate('robertwaltonpearce', 'testdb')
+    Tweet.ensure_index(:id, :unique => true)
   end
 
   def get_tweets
     queries = open('query.txt').map { |line| line.gsub(/\n/,'') }
     results = []
     queries.each {|query| results += self.search_tweets(query)}
-
-    # if Tweet.ensure_index(:id) # how to make this work?
 
     results.each do |result|
       puts result.inspect
