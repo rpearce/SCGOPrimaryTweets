@@ -1,17 +1,14 @@
-require 'rubygems'
-require 'twitter'
-require 'mongo'
-# require 'cloudq_client/publish'
-# require 'json'
+require './includes'
 
 class CandidateTweets
-
   def initialize(city)
     cities = {'charleston' => '32.7765656,-79.9309216', 'columbia' => '34.0007104,-81.0348144', 'greenville' => '34.8526176,-82.3940104', 'spartanburg' => '34.9495672,-81.9320482'}
     @city = city
     @city_coords = cities[city]
-    # db = Mongo::Connection.new("staff.mongohq.com", 10072).db("SCGOPrimary")
-    # puts db.inspect
+
+    MongoMapper.connection = Mongo::Connection.new('staff.mongohq.com', 10072)
+    MongoMapper.database = 'SCGOPrimary'
+    MongoMapper.database.authenticate(ENV['MONGO_USERNAME'], ENV['MONGO_PASSWORD'])
   end
 
   def get_tweets
@@ -28,7 +25,14 @@ class CandidateTweets
       page_num += 1
     end
 
-    results.each {|result| puts result.inspect; puts}
+    results.each do |result|
+      puts result.inspect
+      puts result.attrs['from_user'].inspect
+      puts
+      # tweet = Tweet.create({
+      #
+      # })
+    end
 
     p 'City: ' + @city.inspect
     p 'Query: ' + query.inspect
