@@ -12,10 +12,9 @@ class CandidateTweets
     Tweet.ensure_index(:id, :unique => true)
   end
 
-  def get_tweets
-    queries = open('query.txt').map { |line| line.gsub(/\n/,'') }
+  def get_tweets(query)
     results = []
-    queries.each {|query| results += search_tweets(query)}
+    results += search_tweets(query)
     post_tweets(results)
   end
 
