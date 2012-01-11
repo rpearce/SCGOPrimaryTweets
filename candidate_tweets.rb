@@ -1,7 +1,7 @@
 require './includes'
 
 class CandidateTweets
-  def initialize(city)
+  def initialize(city=nil)
     cities = {'charleston' => '32.7765656,-79.9309216', 'columbia' => '34.0007104,-81.0348144', 'greenville' => '34.8526176,-82.3940104', 'spartanburg' => '34.9495672,-81.9320482'}
     @city = city
     @city_coords = cities[city]
@@ -57,5 +57,38 @@ class CandidateTweets
         :location_found_within => @city.humanize
       })
     end
+  end
+
+  def retrieve_tweets(city)
+    santorum = []
+    perry = []
+    paul = []
+    romney = []
+    gingrich = []
+    huntsman = []
+    all_tweets_for_city = Tweet.where(:location_found_within => city).all
+    all_tweets_for_city.each do |tweet|
+      if tweet.text.match('Santorum') || tweet.text.match('santorum')
+        santorum.push tweet
+      elsif tweet.text.match('Perry') || tweet.text.match('perry')
+        perry.push tweet
+      elsif tweet.text.match('Paul') || tweet.text.match('paul')
+        paul.push tweet
+      elsif tweet.text.match('Romney') || tweet.text.match('romney')
+        romney.push tweet
+      elsif tweet.text.match('Gingrich') || tweet.text.match('gingrich')
+        gingrich.push tweet
+      elsif tweet.text.match('Huntsman') || tweet.text.match('huntsman')
+        huntsman.push tweet
+      else
+        ''
+      end
+    end
+    p 'Santorum: ' + santorum.count.inspect
+    p 'Perry: ' + perry.count.inspect
+    p 'Paul: ' +  paul.count.inspect
+    p 'Romney: ' + romney.count.inspect
+    p 'Gingrich: ' + gingrich.count.inspect
+    p 'Huntsman: ' + huntsman.count.inspect
   end
 end
