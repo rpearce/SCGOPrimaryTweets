@@ -1,5 +1,5 @@
 require './includes'
-require './app'
+require './candidate_tweets'
 
 cities = ['charleston', 'columbia', 'greenville', 'spartanburg']
 
@@ -7,6 +7,6 @@ loop do
   cities.each do |city|
     tweets = CandidateTweets.new(city)
     tweets.get_tweets
-    sleep 10
+    sleep 30
   end
 end
