@@ -1,31 +1,34 @@
 Rick Santorum
 Santorum
+RickSantorum
 Rick Perry
 Governor Perry
 Gov Perry
 Gov. Perry
 Governor Perry
+GovernorPerry
+Perry2012
 Ron Paul
 Rep Paul
 Rep. Paul
 Representative Paul
+RonPaul
 Mitt Romney
 Romney
 Gov Romney
 Gov. Romney
 Governor Romney
+MittRomney
 Newt Gingrich
 Gingrich
 Rep Gingrich
 Rep. Gingrich
 Representative Gingrich
+newtgingrich
+Newt2012
 Jon Huntsman
 Gov Huntsman
 Gov. Huntsman
 Governor Huntsman
-RickSantorum
-newtgingrich
-MittRomney
-RonPaul
 JonHuntsman
-GovernorPerry
+

@@ -1,3 +1,4 @@
+require './includes'
 require 'sinatra'
 
 get '/' do
