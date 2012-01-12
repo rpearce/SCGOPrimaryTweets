@@ -1,6 +1,6 @@
 require './includes'
 require 'sinatra'
 
-# get '/' do
-#   haml :index
-# end
+get '/' do
+  haml :index
+end
