@@ -1,7 +1,8 @@
 require './includes'
 require './candidate_tweets'
 
-cities = ['charleston', 'columbia', 'greenville', 'spartanburg']
+# cities = ['charleston', 'columbia', 'greenville', 'myrtle_beach']
+cities = ['myrtle_beach']
 
 loop do
   cities.each do |city|

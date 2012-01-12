@@ -1,15 +1,19 @@
 == How to get set up:
-    git clone git@github.com:rpearce/SCGOPrimaryTweets.git
-    cd SCGOPrimaryTweets
-    bundle install
+    (Required: RubyGems, Git, Ruby >= v1.9.2)
+    $ git clone git@github.com:rpearce/SCGOPrimaryTweets.git
+    $ cd SCGOPrimaryTweets
+    $ gem install bundler
+    $ bundle install
 
-== Run all major cities in charleston
-    ruby run.rb
+== Run all major cities in Charleston
+    $ ruby run.rb
 
-== Run individual city
-    irb
-    require './app.rb'
-    blah = CandidateTweets.new('charleston')
-    blah.get_tweets
+== To run individual cities, edit 'cities' array in run.rb
+
+== Lookup tweets in specific city with time range included (in UTC)
+    $ irb
+    $ require './candidate_tweets'
+    $ ct = CandidateTweets.new
+    $ ct.tweets_by_city_and_time_range('Charleston', '2012-01-11 01:00:00', '2012-01-11 18:59:59')
 
 yay.

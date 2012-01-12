@@ -1,10 +1,12 @@
 Rick Santorum
 Santorum
 RickSantorum
+WePickRick
 Rick Perry
 Governor Perry
 Gov Perry
 Gov. Perry
+Gov. Rick Perry
 Governor Perry
 GovernorPerry
 Perry2012
@@ -18,7 +20,9 @@ Romney
 Gov Romney
 Gov. Romney
 Governor Romney
+GovernorRomney
 MittRomney
+Mitt2012
 Newt Gingrich
 Gingrich
 Rep Gingrich
@@ -30,5 +34,6 @@ Jon Huntsman
 Gov Huntsman
 Gov. Huntsman
 Governor Huntsman
+GovernorHuntsman
 JonHuntsman
 

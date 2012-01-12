@@ -20,6 +20,7 @@ Romney
 Gov Romney
 Gov. Romney
 Governor Romney
+GovernorRomney
 MittRomney
 Mitt2012
 Newt Gingrich
@@ -33,5 +34,6 @@ Jon Huntsman
 Gov Huntsman
 Gov. Huntsman
 Governor Huntsman
+GovernorHuntsman
 JonHuntsman
 
