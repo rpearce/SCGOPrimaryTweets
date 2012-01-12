@@ -59,6 +59,8 @@ class CandidateTweets
   end
 
   def tweets_by_city_and_time_range(city, start_time, end_time)
+    # Note: Will refactor this when I get time.
+
     santorum = []
     perry = []
     paul = []
@@ -69,21 +71,16 @@ class CandidateTweets
     end_time = end_time.to_time
     all_tweets_found = Tweet.where(:location_found_within => city, :created_at => {'$gt' => start_time, '$lt' => end_time}).sort(:created_at.asc)
     all_tweets_found.each do |tweet|
-      if tweet.text.match('Santorum') || tweet.text.match('santorum')
-        santorum.push tweet
-      elsif tweet.text.match('Perry') || tweet.text.match('perry')
-        perry.push tweet
-      elsif tweet.text.match('Paul') || tweet.text.match('paul')
-        paul.push tweet
-      elsif tweet.text.match('Romney') || tweet.text.match('romney')
-        romney.push tweet
-      elsif tweet.text.match('Gingrich') || tweet.text.match('gingrich')
-        gingrich.push tweet
-      elsif tweet.text.match('Huntsman') || tweet.text.match('huntsman')
-        huntsman.push tweet
-      else
-        ''
-      end
+      t = tweet.text
+      # can't use first name for santorum, perry, and huntsman b/c of genericism
+
+      santorum.push tweet if t.match('Santorum') || t.match('santorum')
+      perry.push tweet if t.match('Perry') || t.match('perry')
+      paul.push tweet if t.match('Paul') || t.match('paul') || t.match('Ron') || t.match('ron')
+      romney.push tweet if t.match('Romney') || t.match('romney') || t.match('Mitt') || t.match('mitt')
+      gingrich.push tweet if t.match('Gingrich') || t.match('gingrich') || t.match('Newt') || t.match('newt')
+      huntsman.push tweet if t.match('Huntsman') || t.match('huntsman')
+
       p 'Location found within: ' + tweet.location_found_within.inspect
       p 'Username: ' + tweet.from_user.inspect
       p 'Tweet Id: ' + tweet.id.inspect

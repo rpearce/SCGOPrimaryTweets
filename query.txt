@@ -1,3 +1,24 @@
+Newt Gingrich
+Gingrich
+Rep Gingrich
+Rep. Gingrich
+Representative Gingrich
+newtgingrich
+Newt2012
+Jon Huntsman
+Gov Huntsman
+Gov. Huntsman
+Governor Huntsman
+GovernorHuntsman
+JonHuntsman
+Mitt Romney
+Romney
+Gov Romney
+Gov. Romney
+Governor Romney
+GovernorRomney
+MittRomney
+Mitt2012
 Rick Santorum
 Santorum
 RickSantorum
@@ -15,25 +36,4 @@ Rep Paul
 Rep. Paul
 Representative Paul
 RonPaul
-Mitt Romney
-Romney
-Gov Romney
-Gov. Romney
-Governor Romney
-GovernorRomney
-MittRomney
-Mitt2012
-Newt Gingrich
-Gingrich
-Rep Gingrich
-Rep. Gingrich
-Representative Gingrich
-newtgingrich
-Newt2012
-Jon Huntsman
-Gov Huntsman
-Gov. Huntsman
-Governor Huntsman
-GovernorHuntsman
-JonHuntsman
 
