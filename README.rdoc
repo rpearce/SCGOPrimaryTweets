@@ -14,6 +14,6 @@
     $ irb
     $ require './candidate_tweets'
     $ ct = CandidateTweets.new
-    $ ct.tweets_by_city_and_time_range('Charleston', '2012-01-11 01:00:00', '2012-01-11 18:59:59')
+    $ ct.tweets_by_city_and_time_range('Charleston', '2012-01-11 11:00:00', '2012-01-12 04:59:59')
 
 yay.

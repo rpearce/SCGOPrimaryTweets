@@ -72,8 +72,8 @@ class CandidateTweets
     all_tweets_found = Tweet.where(:location_found_within => city, :created_at => {'$gt' => start_time, '$lt' => end_time}).sort(:created_at.asc)
     all_tweets_found.each do |tweet|
       t = tweet.text
-      # can't use first name for santorum, perry, and huntsman b/c of genericism
 
+      # can't use first name for santorum, perry, and huntsman b/c of genericism
       santorum.push tweet if t.match('Santorum') || t.match('santorum')
       perry.push tweet if t.match('Perry') || t.match('perry')
       paul.push tweet if t.match('Paul') || t.match('paul') || t.match('Ron') || t.match('ron')
