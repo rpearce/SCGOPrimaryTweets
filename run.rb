@@ -1,13 +1,23 @@
-require './includes'
-require './candidate_tweets'
+class RunApplication
+  require './includes'
+  require './candidate_tweets'
 
-cities = ['myrtle_beach', 'greenville', 'charleston', 'columbia']
-# cities = ['myrtle_beach']
+  def initialize
+    @cities = ['greenville', 'charleston', 'columbia', 'myrtle_beach']
+    # cities = ['myrtle_beach']
+  end
 
-loop do
-  cities.each do |city|
-    tweets = CandidateTweets.new(city)
-    queries = open('query.txt').map { |line| line.gsub(/\n/,'') }
-    queries.each {|query| tweets.get_tweets(query); sleep 100}
+  def run
+    loop do
+      begin
+        @cities.each do |city|
+          tweets = CandidateTweets.new(city)
+          queries = open('query.txt').map { |line| line.gsub(/\n/,'') }
+          queries.each {|query| tweets.get_tweets(query); sleep 100}
+        end
+      rescue
+        p 'Uh oh! Something went wrong.'
+      end
+    end
   end
 end
