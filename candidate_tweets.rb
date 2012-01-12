@@ -1,6 +1,8 @@
 require './includes'
 
 class CandidateTweets
+  CSV_FILE_PATH = File.join(File.dirname(__FILE__), "csv/raw_data.csv")
+
   def initialize(city=nil)
     cities = {'charleston' => '32.7765656,-79.9309216', 'columbia' => '34.0007104,-81.0348144', 'greenville' => '34.8526176,-82.3940104', 'myrtle_beach' => '33.71748624018193,-78.892822265625'}
     @city = city
@@ -59,8 +61,6 @@ class CandidateTweets
   end
 
   def tweets_by_city_and_time_range(city, start_time, end_time)
-    # Note: Will refactor this when I get time.
-
     santorum = []
     perry = []
     paul = []
@@ -72,59 +72,32 @@ class CandidateTweets
     all_tweets_found = Tweet.where(:location_found_within => city, :created_at => {'$gt' => start_time, '$lt' => end_time}).sort(:created_at.asc)
     all_tweets_found.each do |tweet|
       t = tweet.text
-
-      # can't use first name for santorum, perry, and huntsman b/c of genericism
-      santorum.push tweet if t.match('Santorum') || t.match('santorum')
-      perry.push tweet if t.match('Perry') || t.match('perry')
-      paul.push tweet if t.match('Paul') || t.match('paul') || t.match('Ron') || t.match('ron')
-      romney.push tweet if t.match('Romney') || t.match('romney') || t.match('Mitt') || t.match('mitt')
-      gingrich.push tweet if t.match('Gingrich') || t.match('gingrich') || t.match('Newt') || t.match('newt')
-      huntsman.push tweet if t.match('Huntsman') || t.match('huntsman')
-
-      p 'Location found within: ' + tweet.location_found_within.inspect
-      p 'Username: ' + tweet.from_user.inspect
-      p 'Tweet Id: ' + tweet.id.inspect
-      p 'Created at: ' + tweet.created_at.inspect
+      santorum.push tweet if t.match(/(S|s)antorum/)
+      perry.push tweet if t.match(/(P|p)erry/)
+      paul.push tweet if t.match(/(P|p)aul/) || t.match(/(R|r)on/)
+      romney.push tweet if t.match(/(R|r)omney/) || t.match(/(M|m)itt/)
+      gingrich.push tweet if t.match(/(G|g)ingrich/) || t.match(/(N|n)ewt/)
+      huntsman.push tweet if t.match(/(H|h)untsman/)
     end
+
+    all = santorum + perry + paul + romney + gingrich + huntsman
+    unique_tweets = all.uniq
+    unique_tweets.each do |tweet|
+      write_to_raw_data_csv(tweet)
+    end
+
     p 'Santorum: ' + santorum.count.inspect
     p 'Perry: ' + perry.count.inspect
     p 'Paul: ' +  paul.count.inspect
     p 'Romney: ' + romney.count.inspect
     p 'Gingrich: ' + gingrich.count.inspect
     p 'Huntsman: ' + huntsman.count.inspect
-    p "Total Count for #{city}: " + all_tweets_found.count.inspect
+    p "Total Count for #{city}: " + unique_tweets.count.inspect
   end
 
-  # def retrieve_tweets(city)
-  #   santorum = []
-  #   perry = []
-  #   paul = []
-  #   romney = []
-  #   gingrich = []
-  #   huntsman = []
-  #   all_tweets_for_city = Tweet.where(:location_found_within => city).all
-  #   all_tweets_for_city.each do |tweet|
-  #     if tweet.text.match('Santorum') || tweet.text.match('santorum')
-  #       santorum.push tweet
-  #     elsif tweet.text.match('Perry') || tweet.text.match('perry')
-  #       perry.push tweet
-  #     elsif tweet.text.match('Paul') || tweet.text.match('paul')
-  #       paul.push tweet
-  #     elsif tweet.text.match('Romney') || tweet.text.match('romney')
-  #       romney.push tweet
-  #     elsif tweet.text.match('Gingrich') || tweet.text.match('gingrich')
-  #       gingrich.push tweet
-  #     elsif tweet.text.match('Huntsman') || tweet.text.match('huntsman')
-  #       huntsman.push tweet
-  #     else
-  #       ''
-  #     end
-  #   end
-  #   p 'Santorum: ' + santorum.count.inspect
-  #   p 'Perry: ' + perry.count.inspect
-  #   p 'Paul: ' +  paul.count.inspect
-  #   p 'Romney: ' + romney.count.inspect
-  #   p 'Gingrich: ' + gingrich.count.inspect
-  #   p 'Huntsman: ' + huntsman.count.inspect
-  # end
+  def write_to_raw_data_csv(tweet)
+    CSV.open(CSV_FILE_PATH, "a") do |csv|
+      csv << %W[#{tweet.location_found_within} #{tweet.from_user} #{tweet.id} #{tweet.created_at} #{tweet.text}]
+    end
+  end
 end

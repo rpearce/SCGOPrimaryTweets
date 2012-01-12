@@ -2,6 +2,7 @@ require 'rubygems'
 require 'twitter'
 require 'mongo'
 require 'mongo_mapper'
+require 'csv'
 require './tweet'
 
 def titleize(word)

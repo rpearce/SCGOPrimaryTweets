@@ -7,7 +7,6 @@ gem 'cloudq'
 gem 'cloudq_client'
 gem 'sinatra'
 gem 'haml'
-
 # gem 'json'
 # gem 'rest-client'
 # gem 'httparty'
