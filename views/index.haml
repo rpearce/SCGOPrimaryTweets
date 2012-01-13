@@ -2,7 +2,49 @@
 %html
   %head
     %title SCGOPrimary Tweets
+    %link{:rel => "stylesheet", :href => 'application.css', :type => 'text/css'}
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
   %body
-    %h1 Welcome
-    %p
-      Welcome to this placeholder site for the SC Primary candidates' tweets.
+    %h2 Candidate Twitter Mentions -- Alphabetical
+    %table
+      %th
+      %th Charleston
+      %th Columbia
+      %th Greenville
+      %th Myrtle Beach
+      %tr
+        %td Newt Gingrich
+        %td= charleston[:gingrich_tweets].count
+        %td= columbia[:gingrich_tweets].count
+        %td= greenville[:gingrich_tweets].count
+        %td= myrtle_beach[:gingrich_tweets].count
+      %tr
+        %td Jon Huntsman
+        %td= charleston[:huntsman_tweets].count
+        %td= columbia[:huntsman_tweets].count
+        %td= greenville[:huntsman_tweets].count
+        %td= myrtle_beach[:huntsman_tweets].count
+      %tr
+        %td Rick Perry
+        %td= charleston[:perry_tweets].count
+        %td= columbia[:perry_tweets].count
+        %td= greenville[:perry_tweets].count
+        %td= myrtle_beach[:perry_tweets].count
+      %tr
+        %td Ron Paul
+        %td= charleston[:paul_tweets].count
+        %td= columbia[:paul_tweets].count
+        %td= greenville[:paul_tweets].count
+        %td= myrtle_beach[:paul_tweets].count
+      %tr
+        %td Mitt Romney
+        %td= charleston[:romney_tweets].count
+        %td= columbia[:romney_tweets].count
+        %td= greenville[:romney_tweets].count
+        %td= myrtle_beach[:romney_tweets].count
+      %tr
+        %td Rick Santorum
+        %td= charleston[:santorum_tweets].count
+        %td= columbia[:santorum_tweets].count
+        %td= greenville[:santorum_tweets].count
+        %td= myrtle_beach[:santorum_tweets].count

@@ -3,6 +3,7 @@ require 'twitter'
 require 'mongo'
 require 'mongo_mapper'
 require 'csv'
+require 'date'
 require './tweet'
 
 def titleize(word)

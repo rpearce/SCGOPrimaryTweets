@@ -52,6 +52,7 @@ GEM
     rack (1.4.0)
     rack-protection (1.2.0)
       rack
+    rake (0.9.2.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     simple_oauth (0.1.5)
@@ -80,5 +81,6 @@ DEPENDENCIES
   haml
   mongo
   mongo_mapper
+  rake
   sinatra
   twitter
