@@ -25,7 +25,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => "4f0f593e6c13291852002e0d")
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => "157336712970907648")
       page_num += 1
     end
     results
