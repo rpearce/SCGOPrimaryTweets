@@ -25,7 +25,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1)
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => "4f0f593e6c13291852002e0d")
       page_num += 1
     end
     results
@@ -93,7 +93,7 @@ class CandidateTweets
     p 'Gingrich: ' + gingrich.count.inspect
     p 'Huntsman: ' + huntsman.count.inspect
     p "Total Count for #{city}: " + unique_tweets.count.inspect
-    tweets = {:santorum_tweets => santorum, :perry_tweets => perry, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :huntsman_tweets => huntsman}
+    tweets = {:santorum_tweets => santorum, :perry_tweets => perry, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :huntsman_tweets => huntsman, :unique_tweets => unique_tweets}
     tweets
   end
 
