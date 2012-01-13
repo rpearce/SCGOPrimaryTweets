@@ -82,9 +82,9 @@ class CandidateTweets
 
     all = santorum + perry + paul + romney + gingrich + huntsman
     unique_tweets = all.uniq
-    # unique_tweets.each do |tweet|
-    #   write_to_raw_data_csv(tweet)
-    # end
+    unique_tweets.each do |tweet|
+      write_to_raw_data_csv(tweet)
+    end
 
     p 'Santorum: ' + santorum.count.inspect
     p 'Perry: ' + perry.count.inspect

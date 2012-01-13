@@ -8,7 +8,7 @@
     %h2 Candidate Twitter Mentions -- Alphabetical
     Time range:
     %br
-    = "#{Date.today.to_s} 6:00am EST --> #{Date.today.to_s} 11:59pm EST"
+    = "#{Date.yesterday.to_s} 6:00am EST --> #{Date.yesterday.to_s} 11:59pm EST"
     / = "#{DateTime.parse(today_start).strftime('%m/%d/%Y %l:%M%P')} UTC - #{DateTime.parse(today_end).strftime('%m/%d/%Y %l:%M%P')} UTC"
     %table
       %th
