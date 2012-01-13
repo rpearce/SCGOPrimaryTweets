@@ -7,11 +7,8 @@
     %meta{'http-equiv' => 'refresh', :content => '120'}
   %body
     .content
-      / %h2 Candidate Twitter Mentions -- Alphabetical
-      / Time range:
-      / %br
-      / = "2012-01-13 6:00am EST 2012-01-14 11:59pm EST"
-      / = "#{DateTime.parse(today_start).strftime('%m/%d/%Y %l:%M%P')} UTC - #{DateTime.parse(today_end).strftime('%m/%d/%Y %l:%M%P')} UTC"
+      .date-info
+        = "#{(Date.today.to_time + (21600)).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
       %table
         %th
         %th Charleston
@@ -19,67 +16,57 @@
         %th Greenville
         %th Myrtle Beach
         %tr
-          %td.candidate_name
+          %td.candidate-pic
             %img{:src =>'images/gingrich.png'}
-            / %br
-            / Gingrich
+            Gingrich
           %td.data= charleston[:gingrich_tweets].count
           %td.data= columbia[:gingrich_tweets].count
           %td.data= greenville[:gingrich_tweets].count
           %td.data= myrtle_beach[:gingrich_tweets].count
         %tr
-          %td.candidate_name
+          %td.candidate-pic
             %img{:src =>'images/huntsman.png'}
-            / %br
-            / Huntsman
+            Huntsman
           %td.data= charleston[:huntsman_tweets].count
           %td.data= columbia[:huntsman_tweets].count
           %td.data= greenville[:huntsman_tweets].count
           %td.data= myrtle_beach[:huntsman_tweets].count
         %tr
-          %td.candidate_name
+          %td.candidate-pic
             %img{:src =>'images/perry.png'}
-            / %br
-            / Perry
+            Perry
           %td.data= charleston[:perry_tweets].count
           %td.data= columbia[:perry_tweets].count
           %td.data= greenville[:perry_tweets].count
           %td.data= myrtle_beach[:perry_tweets].count
         %tr
-          %td.candidate_name
+          %td.candidate-pic
             %img{:src =>'images/paul.png'}
-            / %br
-            / Paul
+            Paul
           %td.data= charleston[:paul_tweets].count
           %td.data= columbia[:paul_tweets].count
           %td.data= greenville[:paul_tweets].count
           %td.data= myrtle_beach[:paul_tweets].count
         %tr
-          %td.candidate_name
+          %td.candidate-pic
             %img{:src =>'images/romney.png'}
-            / %br
-            / Romney
+            Romney
           %td.data= charleston[:romney_tweets].count
           %td.data= columbia[:romney_tweets].count
           %td.data= greenville[:romney_tweets].count
           %td.data= myrtle_beach[:romney_tweets].count
         %tr
-          %td.candidate_name
+          %td.candidate-pic
             %img{:src =>'images/santorum.png'}
-            / %br
-            / Santorum
+            Santorum
           %td.data= charleston[:santorum_tweets].count
           %td.data= columbia[:santorum_tweets].count
           %td.data= greenville[:santorum_tweets].count
           %td.data= myrtle_beach[:santorum_tweets].count
-        %tr
-        %tr
-        %tr
-          %td.candidate_name
-            Total tweets
-            %br
-            with mentions
-          %td= charleston[:unique_tweets].count
-          %td= columbia[:unique_tweets].count
-          %td= greenville[:unique_tweets].count
-          %td= myrtle_beach[:unique_tweets].count
+        / %tr
+        /   %td.candidate-pic
+        /     Total unique tweets
+        /   %td= charleston[:unique_tweets].count
+        /   %td= columbia[:unique_tweets].count
+        /   %td= greenville[:unique_tweets].count
+        /   %td= myrtle_beach[:unique_tweets].count

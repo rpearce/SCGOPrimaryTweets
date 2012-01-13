@@ -5,8 +5,8 @@ require 'sinatra'
 disable :protection
 
 get '/' do
-  today_start = "2012-01-13 11:00:00"
-  today_end = "2012-01-14 04:59:59"
+  today_start = Date.today.to_s + " 11:00:00"
+  today_end = (Date.today + 1).to_s + " 04:59:59"
   c = CandidateTweets.new()
   charleston = c.tweets_by_city_and_time_range('Charleston', today_start, today_end)
   columbia = c.tweets_by_city_and_time_range('Columbia', today_start, today_end)
