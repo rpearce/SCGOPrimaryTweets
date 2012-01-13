@@ -3,8 +3,8 @@ require './candidate_tweets'
 require 'sinatra'
 
 get '/' do
-  today_start = "#{Date.yesterday.to_s} 11:00:00"
-  today_end = "#{Date.today.to_s} 04:59:59"
+  today_start = "2012-01-12 11:00:00"
+  today_end = "2012-01-13 04:59:59"
   c = CandidateTweets.new()
   charleston = c.tweets_by_city_and_time_range('Charleston', today_start, today_end)
   columbia = c.tweets_by_city_and_time_range('Columbia', today_start, today_end)
