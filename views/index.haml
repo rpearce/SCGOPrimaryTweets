@@ -2,10 +2,12 @@
 %html
   %head
     %title SCGOPrimary Tweets
-    %link{:rel => "stylesheet", :href => 'application.css', :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => 'views/application.css', :type => 'text/css'}
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
   %body
     %h2 Candidate Twitter Mentions -- Alphabetical
+    Time range:
+    = "#{DateTime.parse(today_start).strftime('%m/%d/%Y %l:%M%P')} UTC - #{DateTime.parse(today_end).strftime('%m/%d/%Y %l:%M%P')} UTC"
     %table
       %th
       %th Charleston

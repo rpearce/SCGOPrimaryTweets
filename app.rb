@@ -11,5 +11,5 @@ get '/' do
   greenville = c.tweets_by_city_and_time_range('Greenville', today_start, today_end)
   myrtle_beach = c.tweets_by_city_and_time_range('Myrtle Beach', today_start, today_end)
 
-  haml :index, :locals => { :charleston => charleston, :columbia => columbia, :greenville => greenville, :myrtle_beach => myrtle_beach }
+  haml :index, :locals => { :charleston => charleston, :columbia => columbia, :greenville => greenville, :myrtle_beach => myrtle_beach, :today_start => today_start, :today_end => today_end}
 end
