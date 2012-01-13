@@ -5,61 +5,62 @@
     %link{:rel => 'stylesheet', :href => '../css/application.css', :type => 'text/css'}
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
   %body
-    %h2 Candidate Twitter Mentions -- Alphabetical
-    Time range:
-    %br
-    = "2012-01-12 6:00am EST --> 2012-01-12 11:59pm EST"
-    / = "#{DateTime.parse(today_start).strftime('%m/%d/%Y %l:%M%P')} UTC - #{DateTime.parse(today_end).strftime('%m/%d/%Y %l:%M%P')} UTC"
-    %table
-      %th
-      %th Charleston
-      %th Columbia
-      %th Greenville
-      %th Myrtle Beach
-      %tr
-        %td.candidate_name Newt Gingrich
-        %td= charleston[:gingrich_tweets].count
-        %td= columbia[:gingrich_tweets].count
-        %td= greenville[:gingrich_tweets].count
-        %td= myrtle_beach[:gingrich_tweets].count
-      %tr
-        %td.candidate_name Jon Huntsman
-        %td= charleston[:huntsman_tweets].count
-        %td= columbia[:huntsman_tweets].count
-        %td= greenville[:huntsman_tweets].count
-        %td= myrtle_beach[:huntsman_tweets].count
-      %tr
-        %td.candidate_name Rick Perry
-        %td= charleston[:perry_tweets].count
-        %td= columbia[:perry_tweets].count
-        %td= greenville[:perry_tweets].count
-        %td= myrtle_beach[:perry_tweets].count
-      %tr
-        %td.candidate_name Ron Paul
-        %td= charleston[:paul_tweets].count
-        %td= columbia[:paul_tweets].count
-        %td= greenville[:paul_tweets].count
-        %td= myrtle_beach[:paul_tweets].count
-      %tr
-        %td.candidate_name Mitt Romney
-        %td= charleston[:romney_tweets].count
-        %td= columbia[:romney_tweets].count
-        %td= greenville[:romney_tweets].count
-        %td= myrtle_beach[:romney_tweets].count
-      %tr
-        %td.candidate_name Rick Santorum
-        %td= charleston[:santorum_tweets].count
-        %td= columbia[:santorum_tweets].count
-        %td= greenville[:santorum_tweets].count
-        %td= myrtle_beach[:santorum_tweets].count
-      %tr
-      %tr
-      %tr
-        %td.candidate_name
-          Total tweets
-          %br
-          with mentions
-        %td= charleston[:unique_tweets].count
-        %td= columbia[:unique_tweets].count
-        %td= greenville[:unique_tweets].count
-        %td= myrtle_beach[:unique_tweets].count
+    .content
+      %h2 Candidate Twitter Mentions -- Alphabetical
+      Time range:
+      %br
+      = "2012-01-13 6:00am EST --> 2012-01-14 11:59pm EST"
+      / = "#{DateTime.parse(today_start).strftime('%m/%d/%Y %l:%M%P')} UTC - #{DateTime.parse(today_end).strftime('%m/%d/%Y %l:%M%P')} UTC"
+      %table
+        %th
+        %th Charleston
+        %th Columbia
+        %th Greenville
+        %th Myrtle Beach
+        %tr
+          %td.candidate_name Newt Gingrich
+          %td= charleston[:gingrich_tweets].count
+          %td= columbia[:gingrich_tweets].count
+          %td= greenville[:gingrich_tweets].count
+          %td= myrtle_beach[:gingrich_tweets].count
+        %tr
+          %td.candidate_name Jon Huntsman
+          %td= charleston[:huntsman_tweets].count
+          %td= columbia[:huntsman_tweets].count
+          %td= greenville[:huntsman_tweets].count
+          %td= myrtle_beach[:huntsman_tweets].count
+        %tr
+          %td.candidate_name Rick Perry
+          %td= charleston[:perry_tweets].count
+          %td= columbia[:perry_tweets].count
+          %td= greenville[:perry_tweets].count
+          %td= myrtle_beach[:perry_tweets].count
+        %tr
+          %td.candidate_name Ron Paul
+          %td= charleston[:paul_tweets].count
+          %td= columbia[:paul_tweets].count
+          %td= greenville[:paul_tweets].count
+          %td= myrtle_beach[:paul_tweets].count
+        %tr
+          %td.candidate_name Mitt Romney
+          %td= charleston[:romney_tweets].count
+          %td= columbia[:romney_tweets].count
+          %td= greenville[:romney_tweets].count
+          %td= myrtle_beach[:romney_tweets].count
+        %tr
+          %td.candidate_name Rick Santorum
+          %td= charleston[:santorum_tweets].count
+          %td= columbia[:santorum_tweets].count
+          %td= greenville[:santorum_tweets].count
+          %td= myrtle_beach[:santorum_tweets].count
+        %tr
+        %tr
+        %tr
+          %td.candidate_name
+            Total tweets
+            %br
+            with mentions
+          %td= charleston[:unique_tweets].count
+          %td= columbia[:unique_tweets].count
+          %td= greenville[:unique_tweets].count
+          %td= myrtle_beach[:unique_tweets].count

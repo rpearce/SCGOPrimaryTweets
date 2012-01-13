@@ -1,7 +1,7 @@
 require './includes'
 
 class CandidateTweets
-  CSV_FILE_PATH = File.join(File.dirname(__FILE__), "csv/raw_data_2012-01-12.csv")
+  CSV_FILE_PATH = File.join(File.dirname(__FILE__), "csv/raw_data_2012-01-13.csv")
 
   def initialize(city=nil)
     cities = {'charleston' => '32.7765656,-79.9309216', 'columbia' => '34.0007104,-81.0348144', 'greenville' => '34.8526176,-82.3940104', 'myrtle_beach' => '33.71748624018193,-78.892822265625'}
@@ -25,7 +25,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => "157336712970907648")
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => "157739739309539328")
       page_num += 1
     end
     results
@@ -82,17 +82,18 @@ class CandidateTweets
 
     all = santorum + perry + paul + romney + gingrich + huntsman
     unique_tweets = all.uniq
+    # CSV left commented until I want to write to the CSV.
     # unique_tweets.each do |tweet|
     #   write_to_raw_data_csv(tweet)
     # end
 
-    p 'Santorum: ' + santorum.count.inspect
-    p 'Perry: ' + perry.count.inspect
-    p 'Paul: ' +  paul.count.inspect
-    p 'Romney: ' + romney.count.inspect
-    p 'Gingrich: ' + gingrich.count.inspect
-    p 'Huntsman: ' + huntsman.count.inspect
-    p "Total Count for #{city}: " + unique_tweets.count.inspect
+    # p 'Santorum: ' + santorum.count.inspect
+    # p 'Perry: ' + perry.count.inspect
+    # p 'Paul: ' +  paul.count.inspect
+    # p 'Romney: ' + romney.count.inspect
+    # p 'Gingrich: ' + gingrich.count.inspect
+    # p 'Huntsman: ' + huntsman.count.inspect
+    # p "Total Count for #{city}: " + unique_tweets.count.inspect
     tweets = {:santorum_tweets => santorum, :perry_tweets => perry, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :huntsman_tweets => huntsman, :unique_tweets => unique_tweets}
     tweets
   end
