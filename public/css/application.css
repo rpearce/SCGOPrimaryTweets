@@ -1,3 +1,7 @@
-body {
-  background:;
+table {
+  text-align: center;
+}
+
+.candidate_name {
+  text-align: left;
 }
