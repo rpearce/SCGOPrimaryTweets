@@ -2,6 +2,8 @@ require './includes'
 require './candidate_tweets'
 require 'sinatra'
 
+disable :protection
+
 get '/' do
   today_start = "2012-01-13 11:00:00"
   today_end = "2012-01-14 04:59:59"
