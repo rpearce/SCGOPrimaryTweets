@@ -12,6 +12,8 @@ class CandidateTweets
     MongoMapper.database = 'SCGOPrimary'
     MongoMapper.database.authenticate('robertwaltonpearce', 'testdb')
     Tweet.ensure_index(:id, :unique => true)
+    Tweet.ensure_index(:created_at)
+    Tally.ensure_index(:created_at)
   end
 
   def get_tweets(query)
@@ -25,7 +27,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => "157739739309539328")
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1)
       page_num += 1
     end
     results
@@ -87,15 +89,45 @@ class CandidateTweets
     #   write_to_raw_data_csv(tweet)
     # end
 
-    # p 'Santorum: ' + santorum.count.inspect
-    # p 'Perry: ' + perry.count.inspect
-    # p 'Paul: ' +  paul.count.inspect
-    # p 'Romney: ' + romney.count.inspect
-    # p 'Gingrich: ' + gingrich.count.inspect
-    # p 'Huntsman: ' + huntsman.count.inspect
-    # p "Total Count for #{city}: " + unique_tweets.count.inspect
     tweets = {:santorum_tweets => santorum, :perry_tweets => perry, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :huntsman_tweets => huntsman, :unique_tweets => unique_tweets}
     tweets
+  end
+
+  def get_candidates_tweets_count
+    tally = Tally.last
+    tweet_totals = {:santorum_total => tally[:santorum_total], :perry_total => tally[:perry_total], :paul_total => tally[:paul_total], :romney_total => tally[:romney_total], :gingrich_total => tally[:gingrich_total], :huntsman_total => tally[:huntsman_total]}
+    tweet_totals
+  end
+
+  def write_tally(start_time)
+    santorum = []
+    perry = []
+    paul = []
+    romney = []
+    gingrich = []
+    huntsman = []
+    start_time = start_time.to_time
+    tweets = Tweet.where(:created_at => {'$gt' => start_time})
+    tweets.each do |tweet|
+      t = tweet.text
+      santorum.push tweet if t.match(/(S|s)antorum/)
+      perry.push tweet if t.match(/(P|p)erry/)
+      paul.push tweet if t.match(/(P|p)aul/) || t.match(/(R|r)on/)
+      romney.push tweet if t.match(/(R|r)omney/) || t.match(/(M|m)itt/)
+      gingrich.push tweet if t.match(/(G|g)ingrich/) || t.match(/(N|n)ewt/)
+      huntsman.push tweet if t.match(/(H|h)untsman/)
+    end
+
+    Tally.create({
+      :created_at => Time.now,
+      :gingrich_total => gingrich.length,
+      :huntsman_total => huntsman.length,
+      :perry_total => perry.length,
+      :paul_total => paul.length,
+      :romney_total => romney.length,
+      :santorum_total => santorum.length
+    })
+
   end
 
   def write_to_raw_data_csv(tweet)

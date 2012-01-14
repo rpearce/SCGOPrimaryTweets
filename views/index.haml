@@ -8,13 +8,14 @@
   %body
     .content
       .date-info
-        = "#{(Date.today.to_time + (21600)).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
+        = "#{(Date.today.to_time).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
       %table
         %th
         %th Charleston
         %th Columbia
         %th Greenville
         %th Myrtle Beach
+        %th{:style => 'width:100px'} SC Campaign Total
         %tr
           %td.candidate-pic
             %img{:src =>'images/gingrich.png'}
@@ -24,6 +25,7 @@
           %td.data= columbia[:gingrich_tweets].count
           %td.data= greenville[:gingrich_tweets].count
           %td.data= myrtle_beach[:gingrich_tweets].count
+          %td.data= tweet_totals[:gingrich_total]
         %tr
           %td.candidate-pic
             %img{:src =>'images/huntsman.png'}
@@ -33,6 +35,7 @@
           %td.data= columbia[:huntsman_tweets].count
           %td.data= greenville[:huntsman_tweets].count
           %td.data= myrtle_beach[:huntsman_tweets].count
+          %td.data= tweet_totals[:huntsman_total]
         %tr
           %td.candidate-pic
             %img{:src =>'images/perry.png'}
@@ -42,6 +45,7 @@
           %td.data= columbia[:perry_tweets].count
           %td.data= greenville[:perry_tweets].count
           %td.data= myrtle_beach[:perry_tweets].count
+          %td.data= tweet_totals[:perry_total]
         %tr
           %td.candidate-pic
             %img{:src =>'images/paul.png'}
@@ -51,6 +55,7 @@
           %td.data= columbia[:paul_tweets].count
           %td.data= greenville[:paul_tweets].count
           %td.data= myrtle_beach[:paul_tweets].count
+          %td.data= tweet_totals[:paul_total]
         %tr
           %td.candidate-pic
             %img{:src =>'images/romney.png'}
@@ -60,6 +65,7 @@
           %td.data= columbia[:romney_tweets].count
           %td.data= greenville[:romney_tweets].count
           %td.data= myrtle_beach[:romney_tweets].count
+          %td.data= tweet_totals[:romney_total]
         %tr
           %td.candidate-pic
             %img{:src =>'images/santorum.png'}
@@ -69,6 +75,7 @@
           %td.data= columbia[:santorum_tweets].count
           %td.data= greenville[:santorum_tweets].count
           %td.data= myrtle_beach[:santorum_tweets].count
+          %td.data= tweet_totals[:santorum_total]
         / %tr
         /   %td.candidate-pic
         /     Total unique tweets
