@@ -9,7 +9,7 @@ loop do
     cities.each do |city|
       tweets = CandidateTweets.new(city)
       write_tally = (Time.now.to_s.match(/:\d\d/).to_s.gsub(':','') == '00') || (Time.now.to_s.match(/:\d\d/).to_s.gsub(':','') == '30')
-      tweets.write_tally('2012-01-11 05:00:00') if
+      tweets.write_tally('2012-01-11 05:00:00') if write_tally
       queries = open('query.txt').map { |line| line.gsub(/\n/,'') }
       queries.each {|query| tweets.get_tweets(query); sleep 30}
     end
