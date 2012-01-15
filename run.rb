@@ -1,7 +1,7 @@
 require './includes'
 require './candidate_tweets'
 
-cities = ['myrtle_beach', 'greenville', 'columbia', 'charleston']
+cities = ['greenville', 'myrtle_beach', 'columbia', 'charleston']
 # cities = ['myrtle_beach']
 
 loop do

@@ -1,5 +1,5 @@
 .content {
-  width: 620px;
+  width: 720px;
   height: 400px;
 }
 
@@ -59,6 +59,10 @@ img {
 .data {
   padding-left: 44px;
   padding-right: 44px;
+}
+
+.daily_total {
+  font-weight: bold;
 }
 
 .left {
