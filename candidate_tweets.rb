@@ -94,7 +94,7 @@ class CandidateTweets
   end
 
   def get_candidates_tweets_count
-    tally = Tally.last
+    tally = Tally.last(:order => :created_at.asc)
     tweet_totals = {:santorum_total => tally[:santorum_total], :perry_total => tally[:perry_total], :paul_total => tally[:paul_total], :romney_total => tally[:romney_total], :gingrich_total => tally[:gingrich_total], :huntsman_total => tally[:huntsman_total]}
     tweet_totals
   end
