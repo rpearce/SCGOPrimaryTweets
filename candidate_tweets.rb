@@ -33,8 +33,7 @@ class CandidateTweets
   end
 
   def get_streaming_tweets
-    result = []
-    TweetStream::Client.new.filter({:locations => '32.5792374,-80.299067,33.0981275,-79.5657709', :track => ["Newt Gingrich", "Gingrich", "Rep Gingrich", "Rep. Gingrich", "Representative Gingrich", "newtgingrich", "Newt2012", "Jon Huntsman", "Gov Huntsman", "Gov. Huntsman", "Governor Huntsman", "GovernorHuntsman", "JonHuntsman", "Mitt Romney", "Romney", "Gov Romney", "Gov. Romney", "Governor Romney", "GovernorRomney", "MittRomney", "Mitt2012", "Rick Santorum", "Santorum", "RickSantorum", "WePickRick", "Rick Perry", "Governor Perry", "Gov Perry", "Gov. Perry", "Gov. Rick Perry", "Governor Perry", "GovernorPerry", "Perry2012", "Ron Paul", "Rep Paul", "Rep. Paul", "Representative Paul", "RonPaul"]}) do |tweet|
+    TweetStream::Client.new.filter({:track => ["Newt Gingrich", "Gingrich", "Rep Gingrich", "Rep. Gingrich", "Representative Gingrich", "newtgingrich", "Newt2012", "Jon Huntsman", "Gov Huntsman", "Gov. Huntsman", "Governor Huntsman", "GovernorHuntsman", "JonHuntsman", "Mitt Romney", "Romney", "Gov Romney", "Gov. Romney", "Governor Romney", "GovernorRomney", "MittRomney", "Mitt2012", "Rick Santorum", "Santorum", "RickSantorum", "WePickRick", "Rick Perry", "Governor Perry", "Gov Perry", "Gov. Perry", "Gov. Rick Perry", "Governor Perry", "GovernorPerry", "Perry2012", "Ron Paul", "Rep Paul", "Rep. Paul", "Representative Paul", "RonPaul"], :locations => '-80.29,32.57,-79.56,33.09'}) do |tweet|
       p tweet.inspect
       StreamingTweet.create({:id => tweet.id, :text => tweet.text})
     end
@@ -45,7 +44,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 159014318527090688)
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 159136540193337344)
       page_num += 1
     end
     results
