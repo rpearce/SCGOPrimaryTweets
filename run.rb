@@ -14,6 +14,6 @@ loop do
       queries.each {|query| tweets.get_tweets(query); sleep 30}
     end
   rescue
-    'Uh oh! Something went wrong.'
+    p 'Uh oh! Something went wrong.'
   end
 end

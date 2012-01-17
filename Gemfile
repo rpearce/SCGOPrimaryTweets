@@ -1,9 +1,11 @@
 source 'http://rubygems.org'
 
 gem 'twitter'
+gem 'tweetstream'
 gem 'mongo'
 gem 'mongo_mapper'
 gem 'cloudq'
 gem 'cloudq_client'
 gem 'sinatra'
 gem 'haml'
+gem 'json'

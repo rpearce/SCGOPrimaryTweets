@@ -14,12 +14,30 @@ class CandidateTweets
     Tweet.ensure_index(:id, :unique => true)
     Tweet.ensure_index(:created_at)
     Tally.ensure_index(:created_at)
+    # StreamingTweet.ensure_index(:id, :unique => true)
+    # StreamingTweet.ensure_index(:created_at)
+
+
+    TweetStream.configure do |config|
+      config.username    = 'SCPrimaryTrack'
+      config.password    = 'RandomPassword123'
+      config.auth_method = :basic
+      # config.parser      = :yajl
+    end
   end
 
   def get_tweets(query)
     results = []
     results += search_tweets(query)
     post_tweets(results)
+  end
+
+  def get_streaming_tweets
+    result = []
+    TweetStream::Client.new.track("Newt Gingrich", "Gingrich", "Rep Gingrich", "Rep. Gingrich", "Representative Gingrich", "newtgingrich", "Newt2012", "Jon Huntsman", "Gov Huntsman", "Gov. Huntsman", "Governor Huntsman", "GovernorHuntsman", "JonHuntsman", "Mitt Romney", "Romney", "Gov Romney", "Gov. Romney", "Governor Romney", "GovernorRomney", "MittRomney", "Mitt2012", "Rick Santorum", "Santorum", "RickSantorum", "WePickRick", "Rick Perry", "Governor Perry", "Gov Perry", "Gov. Perry", "Gov. Rick Perry", "Governor Perry", "GovernorPerry", "Perry2012", "Ron Paul", "Rep Paul", "Rep. Paul", "Representative Paul", "RonPaul").locations('32.51','33','-80.23','-79.4') do |tweet|
+      p tweet.inspect
+      StreamingTweet.create({:id => tweet.id, :text => tweet.text})
+    end
   end
 
   def search_tweets(query)
