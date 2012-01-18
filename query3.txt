@@ -1,10 +1,3 @@
-Newt Gingrich
-Gingrich
-Rep Gingrich
-Rep. Gingrich
-Representative Gingrich
-newtgingrich
-Newt2012
 Jon Huntsman
 Gov Huntsman
 Gov. Huntsman
@@ -12,6 +5,13 @@ Governor Huntsman
 GovernorHuntsman
 JonHuntsman
 jon2012
+Newt Gingrich
+Gingrich
+Rep Gingrich
+Rep. Gingrich
+Representative Gingrich
+newtgingrich
+Newt2012
 Ron Paul
 Rep Paul
 Rep. Paul
