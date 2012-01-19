@@ -32,7 +32,8 @@ class CandidateTweets
   end
 
   def get_streaming_tweets
-    TweetStream::Client.new.locations(-80.2979299,32.524896,-79.3579419,33.192843).track('gingrich', 'newtgingrich', 'Newt2012', 'Rep.Gingrich', 'Mitt', 'Romney', 'GovernorRomney', 'MittRomney', 'Mitt2012', 'Santorum', 'RickSantorum', 'WePickRick', 'RickPerry', 'GovernorPerry', 'GovPerry', 'Gov.Perry', 'Perry', 'Perry2012', 'RonPaul', 'RepPaul', 'Rep.Paul', 'RepresentativePaul') do |tweet|
+    # TweetStream::Client.new.filter({:track => ['gingrich', 'newtgingrich', 'Newt2012', 'Rep.Gingrich', 'Mitt', 'Romney', 'GovernorRomney', 'MittRomney', 'Mitt2012', 'Santorum', 'RickSantorum', 'WePickRick', 'RickPerry', 'GovernorPerry', 'GovPerry', 'Gov.Perry', 'Perry', 'Perry2012', 'RonPaul', 'RepPaul', 'Rep.Paul', 'RepresentativePaul']}).locations(-80.2979299,32.524896,-79.3579419,33.192843) do |tweet|
+    TweetStream::Client.new.filter({"locations" => [-80.277979,32.530074,-79.3657943,33.1407154]}) do |tweet|
       p tweet.inspect
       p tweet['location'].inspect
       # StreamingTweet.create({:id => tweet.id, :text => tweet.text})
@@ -44,7 +45,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 159136540193337344)
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 159595406827851777)
       page_num += 1
     end
     results
