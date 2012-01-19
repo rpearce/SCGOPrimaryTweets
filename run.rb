@@ -1,7 +1,7 @@
 require './includes'
 require './candidate_tweets'
 
-cities = ['columbia', 'greenville', 'myrtle_beach', 'charleston']
+cities = ['charleston', 'columbia', 'greenville', 'myrtle_beach']
 # cities = ['myrtle_beach']
 
 loop do
@@ -10,7 +10,7 @@ loop do
       tweets = CandidateTweets.new(city)
       # write_tally = (Time.now.to_s.match(/:\d\d/).to_s.gsub(':','') == '00') || (Time.now.to_s.match(/:\d\d/).to_s.gsub(':','') == '30')
       tweets.write_tally('2012-01-11 05:00:00')
-      queries = open('query.txt').map { |line| line.gsub(/\n/,'') }
+      queries = open('query2.txt').map { |line| line.gsub(/\n/,'') }
       queries.each {|query| tweets.get_tweets(query); sleep 30}
     end
   rescue
