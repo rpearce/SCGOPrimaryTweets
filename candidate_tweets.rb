@@ -32,7 +32,7 @@ class CandidateTweets
   end
 
   def get_streaming_tweets
-    TweetStream::Client.new.locations(-80.2979299,32.524896,-79.3579419,33.192843).track('gingrich', 'newtgingrich', 'Newt2012', 'Rep.Gingrich', 'Mitt', 'Romney', 'GovernorRomney', 'MittRomney', 'Mitt2012', 'Santorum', 'RickSantorum', 'WePickRick', 'RickPerry', 'GovernorPerry', 'GovPerry', 'Gov.Perry', 'Perry', 'Perry2012', 'RonPaul', 'RepPaul', 'Rep.Paul', 'RepresentativePaul'}) do |tweet|
+    TweetStream::Client.new.locations(-80.2979299,32.524896,-79.3579419,33.192843).track('gingrich', 'newtgingrich', 'Newt2012', 'Rep.Gingrich', 'Mitt', 'Romney', 'GovernorRomney', 'MittRomney', 'Mitt2012', 'Santorum', 'RickSantorum', 'WePickRick', 'RickPerry', 'GovernorPerry', 'GovPerry', 'Gov.Perry', 'Perry', 'Perry2012', 'RonPaul', 'RepPaul', 'Rep.Paul', 'RepresentativePaul') do |tweet|
       p tweet.inspect
       p tweet['location'].inspect
       # StreamingTweet.create({:id => tweet.id, :text => tweet.text})
