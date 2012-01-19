@@ -86,7 +86,6 @@ class CandidateTweets
     paul = []
     romney = []
     gingrich = []
-    huntsman = []
     start_time = start_time.to_time
     end_time = end_time.to_time
     all_tweets_found = Tweet.where(:location_found_within => city, :created_at => {'$gt' => start_time, '$lt' => end_time}).sort(:created_at.asc)
@@ -97,23 +96,22 @@ class CandidateTweets
       paul.push tweet if t.match(/(P|p)aul/) || t.match(/(R|r)on/)
       romney.push tweet if t.match(/(R|r)omney/) || t.match(/(M|m)itt/)
       gingrich.push tweet if t.match(/(G|g)ingrich/) || t.match(/(N|n)ewt/)
-      huntsman.push tweet if t.match(/(H|h)untsman/)
     end
 
-    all = santorum + perry + paul + romney + gingrich + huntsman
+    all = santorum + perry + paul + romney + gingrich
     unique_tweets = all.uniq
     # CSV left commented until I want to write to the CSV.
     # unique_tweets.each do |tweet|
     #   write_to_raw_data_csv(tweet)
     # end
 
-    tweets = {:santorum_tweets => santorum, :perry_tweets => perry, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :huntsman_tweets => huntsman, :unique_tweets => unique_tweets}
+    tweets = {:santorum_tweets => santorum, :perry_tweets => perry, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :unique_tweets => unique_tweets}
     tweets
   end
 
   def get_candidates_tweets_count
     tally = Tally.last(:order => :created_at.asc)
-    tweet_totals = {:santorum_total => tally[:santorum_total], :perry_total => tally[:perry_total], :paul_total => tally[:paul_total], :romney_total => tally[:romney_total], :gingrich_total => tally[:gingrich_total], :huntsman_total => tally[:huntsman_total]}
+    tweet_totals = {:santorum_total => tally[:santorum_total], :perry_total => tally[:perry_total], :paul_total => tally[:paul_total], :romney_total => tally[:romney_total], :gingrich_total => tally[:gingrich_total]}
     tweet_totals
   end
 
@@ -123,7 +121,6 @@ class CandidateTweets
     paul = []
     romney = []
     gingrich = []
-    huntsman = []
     start_time = start_time.to_time
     tweets = Tweet.where(:created_at => {'$gt' => start_time})
     tweets.each do |tweet|
@@ -133,13 +130,11 @@ class CandidateTweets
       paul.push tweet if t.match(/(P|p)aul/) || t.match(/(R|r)on/)
       romney.push tweet if t.match(/(R|r)omney/) || t.match(/(M|m)itt/)
       gingrich.push tweet if t.match(/(G|g)ingrich/) || t.match(/(N|n)ewt/)
-      huntsman.push tweet if t.match(/(H|h)untsman/)
     end
 
     Tally.create({
       :created_at => Time.now,
       :gingrich_total => gingrich.length,
-      :huntsman_total => huntsman.length,
       :perry_total => perry.length,
       :paul_total => paul.length,
       :romney_total => romney.length,

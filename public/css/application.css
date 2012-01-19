@@ -23,7 +23,7 @@ table {
 
 table th {
   background: #fff;
-  padding: 5px;
+  padding: 0px;
 }
 
 table tr:nth-child(even) {
@@ -57,8 +57,6 @@ img {
 }
 
 .data {
-  padding-left: 44px;
-  padding-right: 44px;
 }
 
 .daily_total {
