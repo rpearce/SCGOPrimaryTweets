@@ -1,0 +1,63 @@
+!!!
+%html
+  %head
+    %title SCGOPrimary Tweets Custom Selection
+    %link{:rel => 'stylesheet', :href => 'css/application.css', :type => 'text/css'}
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %meta{'http-equiv' => 'refresh', :content => '120'}
+  %body
+    .content
+      .date-info
+        = "Tweets up until 9pm today (Friday the 20th)"
+      %table
+        %th
+        %th Charleston
+        %th Columbia
+        %th Greenville
+        %th Myrtle Beach
+        %th Debate Total
+        %th{:style => 'width:100px'} SC Campaign Total
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/gingrich.png'}
+            %br
+            Gingrich
+          %td.data= charleston_custom[:gingrich_tweets].count
+          %td.data= columbia_custom[:gingrich_tweets].count
+          %td.data= greenville_custom[:gingrich_tweets].count
+          %td.data= myrtle_beach_custom[:gingrich_tweets].count
+          %td.data.daily_total= custom_totals[:gingrich]
+          %td.data= tweet_totals[:gingrich_total]
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/paul.png'}
+            %br
+            Paul
+          %td.data= charleston_custom[:paul_tweets].count
+          %td.data= columbia_custom[:paul_tweets].count
+          %td.data= greenville_custom[:paul_tweets].count
+          %td.data= myrtle_beach_custom[:paul_tweets].count
+          %td.data.daily_total= custom_totals[:paul]
+          %td.data= tweet_totals[:paul_total]
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/romney.png'}
+            %br
+            Romney
+          %td.data= charleston_custom[:romney_tweets].count
+          %td.data= columbia_custom[:romney_tweets].count
+          %td.data= greenville_custom[:romney_tweets].count
+          %td.data= myrtle_beach_custom[:romney_tweets].count
+          %td.data.daily_total= custom_totals[:romney]
+          %td.data= tweet_totals[:romney_total]
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/santorum.png'}
+            %br
+            Santorum
+          %td.data= charleston_custom[:santorum_tweets].count
+          %td.data= columbia_custom[:santorum_tweets].count
+          %td.data= greenville_custom[:santorum_tweets].count
+          %td.data= myrtle_beach_custom[:santorum_tweets].count
+          %td.data.daily_total= custom_totals[:santorum]
+          %td.data= tweet_totals[:santorum_total]
