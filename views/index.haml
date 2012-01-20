@@ -8,15 +8,15 @@
   %body
     .content
       .date-info
-        = "#{(Date.today.to_time).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
-        /= "January 19 2012 8pm EST &rarr; January 19 2012 10pm EST"
+        /= "#{(Date.today.to_time).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
+        = "January 19 2012 8:00pm EST &rarr; January 19 2012 10:00pm EST"
       %table
         %th
         %th Charleston
         %th Columbia
         %th Greenville
         %th Myrtle Beach
-        %th Today's Total
+        %th Debate Total
         %th{:style => 'width:100px'} SC Campaign Total
         %tr
           %td.candidate-pic
