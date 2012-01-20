@@ -5,8 +5,8 @@ require 'sinatra'
 disable :protection
 
 get '/' do
-  today_start = (Date.today + 1).to_s + " 01:00:00"
-  today_end = (Date.today + 1).to_s + " 03:00:00"
+  today_start = Date.today.to_s + " 05:00:00"
+  today_end = (Date.today + 1).to_s + " 04:59:59"
 
   c = CandidateTweets.new()
 

@@ -45,7 +45,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 160061124102995968)
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1)
       page_num += 1
     end
     results
@@ -54,7 +54,7 @@ class CandidateTweets
   def post_tweets(results)
     results.each do |result|
       puts result.inspect
-      tweet = Tweet.create({
+      Tweet.create({
         :created_at => result.attrs['created_at'],
         :entities => result.attrs['entities'],
         :from_user => result.attrs['from_user'],
@@ -77,6 +77,7 @@ class CandidateTweets
         :to_user_name => result.attrs['to_user_name'],
         :location_found_within => @city.titleize
       })
+      puts '*******AFTER CREATE*******'
     end
   end
 
