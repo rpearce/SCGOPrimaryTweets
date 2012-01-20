@@ -8,8 +8,8 @@ class CandidateTweets
     @city = city
     @city_coords = cities[city]
 
-    MongoMapper.connection = Mongo::Connection.new('staff.mongohq.com', 10072)
-    MongoMapper.database = 'SCGOPrimary'
+    MongoMapper.connection = Mongo::Connection.new('claire.mongohq.com', 10077)
+    MongoMapper.database = 'SCGOPrimaryTweets'
     MongoMapper.database.authenticate('robertwaltonpearce', 'testdb')
     Tweet.ensure_index(:id, :unique => true)
     Tweet.ensure_index(:created_at)
@@ -45,7 +45,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1)
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 160061124102995968)
       page_num += 1
     end
     results
@@ -54,7 +54,7 @@ class CandidateTweets
   def post_tweets(results)
     results.each do |result|
       puts result.inspect
-      Tweet.create({
+      tweet = Tweet.create({
         :created_at => result.attrs['created_at'],
         :entities => result.attrs['entities'],
         :from_user => result.attrs['from_user'],
@@ -77,7 +77,6 @@ class CandidateTweets
         :to_user_name => result.attrs['to_user_name'],
         :location_found_within => @city.titleize
       })
-      puts '*******AFTER CREATE*******'
     end
   end
 
