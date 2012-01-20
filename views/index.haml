@@ -7,113 +7,113 @@
     %meta{'http-equiv' => 'refresh', :content => '120'}
   %body
     .content
-      .date-info
-        = "Tweets during last night's debate"
-      %table
-        %th
-        %th Charleston
-        %th Columbia
-        %th Greenville
-        %th Myrtle Beach
-        %th Debate Total
-        %th{:style => 'width:100px'} SC Campaign Total
-        %tr
-          %td.candidate-pic
-            %img{:src =>'images/gingrich.png'}
-            %br
-            Gingrich
-          %td.data= charleston_debate[:gingrich_tweets].count
-          %td.data= columbia_debate[:gingrich_tweets].count
-          %td.data= greenville_debate[:gingrich_tweets].count
-          %td.data= myrtle_beach_debate[:gingrich_tweets].count
-          %td.data.daily_total= debate_totals[:gingrich]
-          %td.data= tweet_totals[:gingrich_total]
-        %tr
-          %td.candidate-pic
-            %img{:src =>'images/paul.png'}
-            %br
-            Paul
-          %td.data= charleston_debate[:paul_tweets].count
-          %td.data= columbia_debate[:paul_tweets].count
-          %td.data= greenville_debate[:paul_tweets].count
-          %td.data= myrtle_beach_debate[:paul_tweets].count
-          %td.data.daily_total= debate_totals[:paul]
-          %td.data= tweet_totals[:paul_total]
-        %tr
-          %td.candidate-pic
-            %img{:src =>'images/romney.png'}
-            %br
-            Romney
-          %td.data= charleston_debate[:romney_tweets].count
-          %td.data= columbia_debate[:romney_tweets].count
-          %td.data= greenville_debate[:romney_tweets].count
-          %td.data= myrtle_beach_debate[:romney_tweets].count
-          %td.data.daily_total= debate_totals[:romney]
-          %td.data= tweet_totals[:romney_total]
-        %tr
-          %td.candidate-pic
-            %img{:src =>'images/santorum.png'}
-            %br
-            Santorum
-          %td.data= charleston_debate[:santorum_tweets].count
-          %td.data= columbia_debate[:santorum_tweets].count
-          %td.data= greenville_debate[:santorum_tweets].count
-          %td.data= myrtle_beach_debate[:santorum_tweets].count
-          %td.data.daily_total= debate_totals[:santorum]
-          %td.data= tweet_totals[:santorum_total]
-
-      / %br
-      / .date_info
-      /   = "#{(Date.today.to_time).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
+      / .date-info
+      /   = "Tweets during last night's debate"
       / %table
       /   %th
       /   %th Charleston
       /   %th Columbia
       /   %th Greenville
       /   %th Myrtle Beach
-      /   %th Today's Total
+      /   %th Debate Total
       /   %th{:style => 'width:100px'} SC Campaign Total
       /   %tr
       /     %td.candidate-pic
       /       %img{:src =>'images/gingrich.png'}
       /       %br
       /       Gingrich
-      /     %td.data= charleston[:gingrich_tweets].count
-      /     %td.data= columbia[:gingrich_tweets].count
-      /     %td.data= greenville[:gingrich_tweets].count
-      /     %td.data= myrtle_beach[:gingrich_tweets].count
-      /     %td.data.daily_total= daily_totals[:gingrich]
+      /     %td.data= charleston_debate[:gingrich_tweets].count
+      /     %td.data= columbia_debate[:gingrich_tweets].count
+      /     %td.data= greenville_debate[:gingrich_tweets].count
+      /     %td.data= myrtle_beach_debate[:gingrich_tweets].count
+      /     %td.data.daily_total= debate_totals[:gingrich]
       /     %td.data= tweet_totals[:gingrich_total]
       /   %tr
       /     %td.candidate-pic
       /       %img{:src =>'images/paul.png'}
       /       %br
       /       Paul
-      /     %td.data= charleston[:paul_tweets].count
-      /     %td.data= columbia[:paul_tweets].count
-      /     %td.data= greenville[:paul_tweets].count
-      /     %td.data= myrtle_beach[:paul_tweets].count
-      /     %td.data.daily_total= daily_totals[:paul]
+      /     %td.data= charleston_debate[:paul_tweets].count
+      /     %td.data= columbia_debate[:paul_tweets].count
+      /     %td.data= greenville_debate[:paul_tweets].count
+      /     %td.data= myrtle_beach_debate[:paul_tweets].count
+      /     %td.data.daily_total= debate_totals[:paul]
       /     %td.data= tweet_totals[:paul_total]
       /   %tr
       /     %td.candidate-pic
       /       %img{:src =>'images/romney.png'}
       /       %br
       /       Romney
-      /     %td.data= charleston[:romney_tweets].count
-      /     %td.data= columbia[:romney_tweets].count
-      /     %td.data= greenville[:romney_tweets].count
-      /     %td.data= myrtle_beach[:romney_tweets].count
-      /     %td.data.daily_total= daily_totals[:romney]
+      /     %td.data= charleston_debate[:romney_tweets].count
+      /     %td.data= columbia_debate[:romney_tweets].count
+      /     %td.data= greenville_debate[:romney_tweets].count
+      /     %td.data= myrtle_beach_debate[:romney_tweets].count
+      /     %td.data.daily_total= debate_totals[:romney]
       /     %td.data= tweet_totals[:romney_total]
       /   %tr
       /     %td.candidate-pic
       /       %img{:src =>'images/santorum.png'}
       /       %br
       /       Santorum
-      /     %td.data= charleston[:santorum_tweets].count
-      /     %td.data= columbia[:santorum_tweets].count
-      /     %td.data= greenville[:santorum_tweets].count
-      /     %td.data= myrtle_beach[:santorum_tweets].count
-      /     %td.data.daily_total= daily_totals[:santorum]
+      /     %td.data= charleston_debate[:santorum_tweets].count
+      /     %td.data= columbia_debate[:santorum_tweets].count
+      /     %td.data= greenville_debate[:santorum_tweets].count
+      /     %td.data= myrtle_beach_debate[:santorum_tweets].count
+      /     %td.data.daily_total= debate_totals[:santorum]
       /     %td.data= tweet_totals[:santorum_total]
+      /
+      / %br
+      .date-info
+        = "#{(Date.today.to_time).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
+      %table
+        %th
+        %th Charleston
+        %th Columbia
+        %th Greenville
+        %th Myrtle Beach
+        %th Today's Total
+        %th{:style => 'width:100px'} SC Campaign Total
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/gingrich.png'}
+            %br
+            Gingrich
+          %td.data= charleston[:gingrich_tweets].count
+          %td.data= columbia[:gingrich_tweets].count
+          %td.data= greenville[:gingrich_tweets].count
+          %td.data= myrtle_beach[:gingrich_tweets].count
+          %td.data.daily_total= daily_totals[:gingrich]
+          %td.data= tweet_totals[:gingrich_total]
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/paul.png'}
+            %br
+            Paul
+          %td.data= charleston[:paul_tweets].count
+          %td.data= columbia[:paul_tweets].count
+          %td.data= greenville[:paul_tweets].count
+          %td.data= myrtle_beach[:paul_tweets].count
+          %td.data.daily_total= daily_totals[:paul]
+          %td.data= tweet_totals[:paul_total]
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/romney.png'}
+            %br
+            Romney
+          %td.data= charleston[:romney_tweets].count
+          %td.data= columbia[:romney_tweets].count
+          %td.data= greenville[:romney_tweets].count
+          %td.data= myrtle_beach[:romney_tweets].count
+          %td.data.daily_total= daily_totals[:romney]
+          %td.data= tweet_totals[:romney_total]
+        %tr
+          %td.candidate-pic
+            %img{:src =>'images/santorum.png'}
+            %br
+            Santorum
+          %td.data= charleston[:santorum_tweets].count
+          %td.data= columbia[:santorum_tweets].count
+          %td.data= greenville[:santorum_tweets].count
+          %td.data= myrtle_beach[:santorum_tweets].count
+          %td.data.daily_total= daily_totals[:santorum]
+          %td.data= tweet_totals[:santorum_total]
