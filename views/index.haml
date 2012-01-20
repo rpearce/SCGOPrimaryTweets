@@ -8,14 +8,15 @@
   %body
     .content
       .date-info
-        = "#{(Date.today.to_time).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
+        / = "#{(Date.today.to_time).strftime('%b %e %Y %l:%M%P')} EST &rarr; #{((Date.today + 1).to_time - 60).strftime('%b %e %Y %l:%M%P')} EST"
+        = "January 19 2012 8pm EST &rarr; January 19 2012 10pm EST"
       %table
         %th
         %th Charleston
         %th Columbia
         %th Greenville
         %th Myrtle Beach
-        %th Today's Total
+        %th Debate Total
         %th{:style => 'width:100px'} SC Campaign Total
         %tr
           %td.candidate-pic
@@ -39,17 +40,6 @@
           %td.data= myrtle_beach[:paul_tweets].count
           %td.data.daily_total= daily_totals[:paul]
           %td.data= tweet_totals[:paul_total]
-        %tr
-          %td.candidate-pic
-            %img{:src =>'images/perry.png'}
-            %br
-            Perry
-          %td.data= charleston[:perry_tweets].count
-          %td.data= columbia[:perry_tweets].count
-          %td.data= greenville[:perry_tweets].count
-          %td.data= myrtle_beach[:perry_tweets].count
-          %td.data.daily_total= daily_totals[:perry]
-          %td.data= tweet_totals[:perry_total]
         %tr
           %td.candidate-pic
             %img{:src =>'images/romney.png'}

@@ -45,7 +45,7 @@ class CandidateTweets
     num = 15
     page_num = 1
     num.times do
-      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 159595406827851777)
+      results += Twitter.search(query, :geocode => @city_coords + ',50mi', :page => page_num, :rpp => 100, :include_entities => 1, :since_id => 160061124102995968)
       page_num += 1
     end
     results
@@ -82,7 +82,6 @@ class CandidateTweets
 
   def tweets_by_city_and_time_range(city, start_time, end_time)
     santorum = []
-    perry = []
     paul = []
     romney = []
     gingrich = []
@@ -92,32 +91,30 @@ class CandidateTweets
     all_tweets_found.each do |tweet|
       t = tweet.text
       santorum.push tweet if t.match(/(S|s)antorum/)
-      perry.push tweet if t.match(/(P|p)erry/)
       paul.push tweet if t.match(/(P|p)aul/) || t.match(/(R|r)on/)
       romney.push tweet if t.match(/(R|r)omney/) || t.match(/(M|m)itt/)
       gingrich.push tweet if t.match(/(G|g)ingrich/) || t.match(/(N|n)ewt/)
     end
 
-    all = santorum + perry + paul + romney + gingrich
+    all = santorum + paul + romney + gingrich
     unique_tweets = all.uniq
     # CSV left commented until I want to write to the CSV.
     # unique_tweets.each do |tweet|
     #   write_to_raw_data_csv(tweet)
     # end
 
-    tweets = {:santorum_tweets => santorum, :perry_tweets => perry, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :unique_tweets => unique_tweets}
+    tweets = {:santorum_tweets => santorum, :paul_tweets => paul, :romney_tweets => romney, :gingrich_tweets => gingrich, :unique_tweets => unique_tweets}
     tweets
   end
 
   def get_candidates_tweets_count
     tally = Tally.last(:order => :created_at.asc)
-    tweet_totals = {:santorum_total => tally[:santorum_total], :perry_total => tally[:perry_total], :paul_total => tally[:paul_total], :romney_total => tally[:romney_total], :gingrich_total => tally[:gingrich_total]}
+    tweet_totals = {:santorum_total => tally[:santorum_total], :paul_total => tally[:paul_total], :romney_total => tally[:romney_total], :gingrich_total => tally[:gingrich_total]}
     tweet_totals
   end
 
   def write_tally(start_time)
     santorum = []
-    perry = []
     paul = []
     romney = []
     gingrich = []
@@ -126,7 +123,6 @@ class CandidateTweets
     tweets.each do |tweet|
       t = tweet.text
       santorum.push tweet if t.match(/(S|s)antorum/)
-      perry.push tweet if t.match(/(P|p)erry/)
       paul.push tweet if t.match(/(P|p)aul/) || t.match(/(R|r)on/)
       romney.push tweet if t.match(/(R|r)omney/) || t.match(/(M|m)itt/)
       gingrich.push tweet if t.match(/(G|g)ingrich/) || t.match(/(N|n)ewt/)
@@ -135,7 +131,6 @@ class CandidateTweets
     Tally.create({
       :created_at => Time.now,
       :gingrich_total => gingrich.length,
-      :perry_total => perry.length,
       :paul_total => paul.length,
       :romney_total => romney.length,
       :santorum_total => santorum.length

@@ -5,8 +5,8 @@ require 'sinatra'
 disable :protection
 
 get '/' do
-  today_start = Date.today.to_s + " 05:00:00"
-  today_end = (Date.today + 1).to_s + " 04:59:59"
+  today_start = (Date.today + 1).to_s + " 01:00:00"
+  today_end = (Date.today + 1).to_s + " 03:00:00"
 
   c = CandidateTweets.new()
 
@@ -15,7 +15,7 @@ get '/' do
   greenville = c.tweets_by_city_and_time_range('Greenville', today_start, today_end)
   myrtle_beach = c.tweets_by_city_and_time_range('Myrtle Beach', today_start, today_end)
 
-  candidates = [:gingrich, :paul, :perry, :romney, :santorum]
+  candidates = [:gingrich, :paul, :romney, :santorum]
   daily_totals = {}
   candidates.each do |candidate|
     daily_totals[candidate] = charleston[:"#{candidate}_tweets"].count + columbia[:"#{candidate}_tweets"].count + greenville[:"#{candidate}_tweets"].count + myrtle_beach[:"#{candidate}_tweets"].count
