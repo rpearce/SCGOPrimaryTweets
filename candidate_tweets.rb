@@ -8,9 +8,9 @@ class CandidateTweets
     @city = city
     @city_coords = cities[city]
 
-    MongoMapper.connection = Mongo::Connection.new('claire.mongohq.com', 10077)
-    MongoMapper.database = 'SCGOPrimaryTweets'
-    MongoMapper.database.authenticate('robertwaltonpearce', 'testdb')
+    MongoMapper.connection = Mongo::Connection.new('HOST', 10077)
+    MongoMapper.database = 'YOURDATABASE'
+    MongoMapper.database.authenticate('USERNAME', 'PASSWORD')
     Tweet.ensure_index(:id, :unique => true)
     Tweet.ensure_index(:created_at)
     Tally.ensure_index(:created_at)
@@ -18,8 +18,8 @@ class CandidateTweets
     # StreamingTweet.ensure_index(:created_at)
 
     TweetStream.configure do |config|
-      config.username    = 'SCPrimaryTrack'
-      config.password    = 'RandomPassword123'
+      config.username    = 'USERNAME'
+      config.password    = 'PASSWORD'
       config.auth_method = :basic
       # config.parser      = :yajl
     end
